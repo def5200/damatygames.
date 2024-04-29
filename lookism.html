@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lookism Anime</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .episode {
+            display: none;
+        }
+
+        .episode.active {
+            display: block;
+        }
+
+        .episode iframe {
+            width: 100%;
+            max-width: 640px;
+            height: 384px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .navigation {
+            margin-top: 20px;
+        }
+
+        .navigation button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1;
+        }
+
+        .episode-buttons {
+            margin-bottom: 20px;
+        }
+
+        .episode-buttons button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://i.imgur.com/I1TFu8I.gif" alt="Your Logo" width="100">
+    </div>
+    <div class="container">
+        <h1>Lookism Anime</h1>
+        <img src="https://th.bing.com/th/id/OIP.wB1TONBwCBYQELSb-rG-DgHaLH?rs=1&pid=ImgDetMain" alt="Lookism Image">
+        
+        <div class="episode-buttons">
+            <button onclick="showEpisode(1)">Episode 1</button>
+            <button onclick="showEpisode(2)">Episode 2</button>
+            <button onclick="showEpisode(3)">Episode 3</button>
+            <button onclick="showEpisode(4)">Episode 4</button>
+            <button onclick="showEpisode(5)">Episode 5</button>
+            <button onclick="showEpisode(6)">Episode 6</button>
+            <button onclick="showEpisode(7)">Episode 7</button>
+            <button onclick="showEpisode(8)">Episode 8</button>
+        </div>
+        
+        <div class="episode active" id="episode1">
+            <iframe src="https://video.sibnet.ru/shell.php?videoid=4973008" frameborder="0" scrolling="no" allowfullscreen></iframe>
+        </div>
+        
+        <div class="episode" id="episode2">
+            <iframe src="https://video.sibnet.ru/shell.php?videoid=4973009" frameborder="0" scrolling="no" allowfullscreen></iframe>
+        </div>
+
+        <div class="episode" id="episode3">
+            <iframe src="https://video.sibnet.ru/shell.php?videoid=4973011" frameborder="0" scrolling="no" allowfullscreen></iframe>
+        </div>
+
+        <div class="episode" id="episode4">
+            <iframe src="https://video.sibnet.ru/shell.php?videoid=4973013" frameborder="0" scrolling="no" allowfullscreen></iframe>
+        </div>
+
+        <div class="episode" id="episode5">
+            <iframe src="https://video.sibnet.ru/shell.php?videoid=4973015" frameborder="0" scrolling="no" allowfullscreen></iframe>
+        </div>
+
+        <div class="episode" id="episode6">
+            <iframe src="https://video.sibnet.ru/shell.php?videoid=4973016" frameborder="0" scrolling="no" allowfullscreen></iframe>
+        </div>
+
+        <div class="episode" id="episode7">
+            <iframe src="https://video.sibnet.ru/shell.php?videoid=4973018" frameborder="0" scrolling="no" allowfullscreen></iframe>
+        </div>
+
+        <div class="episode" id="episode8">
+            <iframe src="https://video.sibnet.ru/shell.php?videoid=4973019" frameborder="0" scrolling="no" allowfullscreen></iframe>
+        </div>
+
+        <div class="navigation">
+            <button onclick="previousEpisode()">Précédent</button>
+            <button onclick="nextEpisode()">Suivant</button>
+        </div>
+    </div>
+
+    <script>
+        var currentEpisode = 1;
+        var totalEpisodes = document.querySelectorAll('.episode').length;
+
+        function previousEpisode() {
+            var previousEpisodeNumber = currentEpisode - 1;
+            if (previousEpisodeNumber >= 1) {
+                showEpisode(previousEpisodeNumber);
+                currentEpisode = previousEpisodeNumber;
+            } else {
+                // Si l'épisode actuel est le premier, passe au dernier épisode
+                showEpisode(totalEpisodes);
+                currentEpisode = totalEpisodes;
+            }
+        }
+
+        function nextEpisode() {
+            var nextEpisodeNumber = currentEpisode + 1;
+            if (nextEpisodeNumber <= totalEpisodes) {
+                showEpisode(nextEpisodeNumber);
+                currentEpisode = nextEpisodeNumber;
+            } else {
+                // Si l'épisode actuel est le dernier, passe au premier épisode
+                showEpisode(1);
+                currentEpisode = 1;
+            }
+        }
+
+        function showEpisode(episodeNumber) {
+            // Masque tous les épisodes
+            var episodes = document.querySelectorAll('.episode');
+            episodes.forEach(function(episode) {
+                episode.classList.remove('active');
+            });
+
+            // Affiche l'épisode sélectionné
+            var selectedEpisode = document.getElementById('episode' + episodeNumber);
+            if (selectedEpisode) {
+                selectedEpisode.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
