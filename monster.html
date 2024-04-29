@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titre de votre page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-image: url("https://fr.web.img6.acsta.net/pictures/20/10/28/11/20/0349828.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        #episode-select {
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        #player {
+            width: 640px;
+            height: 384px;
+        }
+        select, iframe {
+            margin-top: 10px;
+        }
+        #logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Damaty Games</h2>
+    <img id="logo" src="https://i.imgur.com/I1TFu8I.gif" alt="Votre logo">
+
+    <h1>Choisissez un épisode :</h1>
+    <select id="episode-select">
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741195">Épisode 1</option>
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741198">Épisode 2</option>
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741200">Épisode 3</option>
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741200">Épisode 4</option>
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741203">Épisode 5</option>
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741205">Épisode 6</option>
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741208">Épisode 7</option>
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741215">Épisode 8</option>
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741220">Épisode 9</option>
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741222">Épisode 10</option>
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741224">Épisode 11</option>
+        <option value="https://video.sibnet.ru/shell.php?videoid=4741227">Épisode 12</option>
+        <!-- Ajoutez d'autres épisodes de la même manière -->
+    </select>
+    <br><br>
+    <iframe id="player" src="" frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+    <script>
+        var episodeSelect = document.getElementById("episode-select");
+        var player = document.getElementById("player");
+
+        episodeSelect.addEventListener("change", function() {
+            var selectedEpisode = episodeSelect.value;
+            player.src = selectedEpisode;
+        });
+
+        // Chargement du premier épisode par défaut
+        player.src = episodeSelect.options[0].value;
+    </script>
+</body>
+</html>
