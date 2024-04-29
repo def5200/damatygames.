@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wind Breaker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url("https://th.bing.com/th/id/OIP.igVf2_q6S_EN1ikBEz2qygHaEK?rs=1&pid=ImgDetMain");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-transform: uppercase;
+            color: orange; /* Couleur du titre en orange */
+        }
+
+        #container {
+            width: 70%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(20, 20, 20, 0.8); /* Opacité pour améliorer la lisibilité */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        #video-container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        iframe {
+            width: 320px;
+            height: 192px;
+            border: 5px solid orange; /* Bordure orange autour de l'iframe */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .anime-image {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: orange; /* Couleur des boutons en orange */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d63000;
+        }
+
+        select {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: orange; /* Couleur du fond de la liste déroulante en orange */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        select:hover {
+            background-color: #d63000;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img class="anime-image" src="https://th.bing.com/th/id/OIP.igVf2_q6S_EN1ikBEz2qygHaEK?rs=1&pid=ImgDetMain" alt="Image de présentation de l'anime Wind Breaker">
+        <h1>Wind Breaker</h1>
+        <div id="video-container">
+            <iframe width="640" height="384" src="https://video.sibnet.ru/shell.php?videoid=5493439" frameborder="0" scrolling="no" allowfullscreen></iframe>
+        </div>
+        <div class="button-container">
+            <button onclick="previousEpisode()">Épisode précédent</button>
+            <select id="episodeSelector" onchange="changeEpisode()">
+                <option value="0">Épisode 1</option>
+                <option value="1">Épisode 2</option>
+                <option value="2">Épisode 3</option>
+                <option value="3">Épisode 4</option>
+            </select>
+            <button onclick="nextEpisode()">Épisode suivant</button>
+        </div>
+    </div>
+
+    <script>
+        var episodes = [
+            "https://video.sibnet.ru/shell.php?videoid=5493439",
+            "https://video.sibnet.ru/shell.php?videoid=5501689",
+            "https://video.sibnet.ru/shell.php?videoid=5509269",
+            "https://video.sibnet.ru/shell.php?videoid=5515688"
+        ];
+
+        var currentEpisodeIndex = 0;
+
+        function nextEpisode() {
+            currentEpisodeIndex = (currentEpisodeIndex + 1) % episodes.length;
+            updateEpisode();
+        }
+
+        function previousEpisode() {
+            currentEpisodeIndex = (currentEpisodeIndex - 1 + episodes.length) % episodes.length;
+            updateEpisode();
+        }
+
+        function changeEpisode() {
+            currentEpisodeIndex = document.getElementById("episodeSelector").value;
+            updateEpisode();
+        }
+
+        function updateEpisode() {
+            var videoContainer = document.getElementById("video-container");
+            videoContainer.innerHTML = '<iframe width="640" height="384" src="' + episodes[currentEpisodeIndex] + '" frameborder="0" scrolling="no" allowfullscreen></iframe>';
+        }
+    </script>
+</body>
+</html>
