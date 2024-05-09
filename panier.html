@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre Panier</title>
+  <style>
+    /* Styles généraux */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2a2a2a;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    .panier-icon {
+      width: 30px;
+      height: 30px;
+      background-image: url('https://icones.pro/wp-content/uploads/2021/05/icone-de-panier-violet.png');
+      background-size: cover;
+      display: inline-block;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .discord-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+
+    .panier {
+      background-color: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .panier h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .panier ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .panier li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Votre Panier</h1>
+      <a href="#" class="discord-link">Lier son compte Discord</a>
+      <a href="index.html" class="panier-icon"></a>
+    </div>
+  </header>
+  <div class="panier">
+    <h2>Contenu de votre panier :</h2>
+    <ul class="panier-list">
+      <?php
+      if(isset($_GET['panier'])) {
+        $panier = explode(',', $_GET['panier']);
+        foreach ($panier as $jeu) {
+          echo '<li>' . $jeu . '</li>';
+        }
+      }
+      ?>
+    </ul>
+    <a href="#" class="btn">Valider l'achat</a>
+  </div>
+  <footer>
+    <p>&copy; 2024 Tous droits réservés.</p>
+  </footer>
+</body>
+</html>

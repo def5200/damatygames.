@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acheter des clés Steam</title>
+  <style>
+    /* Styles généraux */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2a2a2a;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    .panier-icon {
+      width: 30px;
+      height: 30px;
+      background-image: url('https://icones.pro/wp-content/uploads/2021/05/icone-de-panier-violet.png');
+      background-size: cover;
+      display: inline-block;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .discord-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+
+    .panier {
+      background-color: #f8f9fa;
+      padding: 10px;
+      text-align: center;
+      margin-bottom: 20px;
+      width: 150px;
+      position: fixed;
+      top: 50px;
+      right: 10px;
+    }
+
+    .panier h2 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .panier ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .panier li {
+      margin-bottom: 5px;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .produits {
+      margin-top: 80px; /* Pour compenser la hauteur du panier */
+      margin-left: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .produit {
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: .25rem;
+      padding: 20px;
+      margin-bottom: 20px;
+      width: 30%;
+      margin-right: 20px;
+    }
+
+    .produit img {
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .produit h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .produit p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .produit button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .produit button:hover {
+      background-color: #0056b3;
+    }
+
+    .selected-game {
+      background-color: #f8f9fa;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .selected-game h2 {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Clés Steam pour des jeux incroyables !</h1>
+      <a href="#" class="discord-link">Lier son compte Discord</a>
+      <a href="panier.html" class="panier-icon"></a>
+    </div>
+  </header>
+  <div class="panier">
+    <h2>Panier</h2>
+    <ul class="panier-list">
+      <!-- Contenu du panier -->
+    </ul>
+  </div>
+  <div class="produits">
+    <div class="produit" onclick="selectGame('Nom du jeu 1')">
+      <img src="image_jeu1.jpg" alt="Image du jeu 1">
+      <h2>Nom du jeu 1</h2>
+      <p>Prix: 20€</p>
+      <button class="btn btn-primary">Ajouter au panier</button>
+    </div>
+    <div class="produit" onclick="selectGame('Nom du jeu 2')">
+      <img src="image_jeu2.jpg" alt="Image du jeu 2">
+      <h2>Nom du jeu 2</h2>
+      <p>Prix: 30€</p>
+      <button class="btn btn-primary">Ajouter au panier</button>
+    </div>
+    <!-- Ajoute d'autres jeux ici -->
+  </div>
+  <footer>
+    <p>&copy; 2024 Tous droits réservés.</p>
+  </footer>
+
+  <!-- Script pour sélectionner un jeu -->
+  <script>
+    function selectGame(gameName) {
+      // Récupérer les éléments du panier actuel depuis l'URL
+      var urlParams = new URLSearchParams(window.location.search);
+      var panier = urlParams.get('panier');
+      var newPanier = gameName;
+
+      // Ajouter le nouveau jeu au panier
+      if (panier !== null) {
+        newPanier = panier + ',' + gameName;
+      }
+
+      // Rediriger vers la page du panier avec le nouveau panier
+      window.location.href = 'panier.html?panier=' + newPanier;
+    }
+  </script>
+</body>
+</html>
